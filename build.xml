@@ -1,0 +1,162 @@
+<project name="A4" default="compile" basedir="."  xmlns:if="ant:if"
+         xmlns:unless="ant:unless">
+    <description>
+        A4 Ant build file
+    </description>
+    <!-- set global properties for this build -->
+    <property name="src" location="src/"/>
+    <property name="build" location="build"/>
+    <property name="doc" location="doc"/>
+    <property name="lib" location="lib"/>
+    <property name="dist" location="dist"/>
+    <property name="res" location="res"/>
+    <property name="test" location="test"/>
+    <property name="javafxlib" location="javafxlib"/>
+
+    <property name="libfile" value="dnd-A4.jar"/>
+    <property name="libfile1" value="hamcrest-core-1.3.jar"/>
+    <property name="libfile2" value="junit-4.12.jar"/>
+    <property name="jar_file" value="sbajwa.jar"/>
+    <property name="main_class" value="sbajwa.Launcher"/>
+    <property name="res_folder" value="res"/>
+
+    <property environment="env"/>
+    <condition property="isWindows">
+        <os family="windows" />
+    </condition>
+
+    <condition property="isLinux">
+        <os name="Linux" />
+    </condition>
+
+    <condition property="isMac">
+        <os family="unix" />
+    </condition>
+
+    <path id="libs.jars">
+        <fileset dir="${lib}">
+            <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="${env.JAVAFX_HOME}" if:set="isLinux">
+            <include name="**/*.jar"/>
+        </fileset>
+        <fileset dir="${javafxlib}">
+            <include name="**/*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="le.build">
+        <fileset dir="${build}">
+            <include name="*.class"/>
+        </fileset>
+
+    </path>
+
+
+    <target name="init">
+        <tstamp/><!-- Create the time stamp -->
+        <mkdir dir="${build}"/>   <!-- Create the build directory -->
+        <mkdir dir="${doc}" />
+    </target>
+
+    <target name="compile" depends="init" description="compile the source">
+        <!-- Compile the Java code from ${src} into ${build} -->
+        <javac includeantruntime="false" srcdir="${src}" destdir="${build}">
+            <classpath refid="libs.jars"/>
+        </javac>
+    </target>
+
+
+    <target name="doc" depends="init" description="generate documentation">
+        <javadoc  destdir="${doc}" classpath="lib/${libfile}">
+            <fileset dir="${src}" casesensitive="yes" defaultexcludes="yes">
+                <include name="**/*.java"/>
+            </fileset>
+        </javadoc>
+    </target>
+
+    <target name="clean"
+            description="clean up">
+        <delete dir="${build}"/>
+        <delete dir = "${doc}"/>
+        <delete dir="${dist}"/>
+        <delete dir="out"/>
+    </target>
+
+    <!-- CheckStyle Configuration and task. Does not run automatically -->
+    <taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties"
+             classpath="checkstyle/checkstyle-8.24-all.jar"/>
+    <target name="checkstyle"
+            description="Generates a report of code convention violations.">
+
+        <checkstyle config="checkstyle/A3checks.xml"
+                    failureProperty="checkstyle.failure"
+                    failOnViolation="false">
+            <fileset dir="src" includes="**/*.java"/>
+        </checkstyle>
+    </target>
+
+    <target name="copy"
+            description="copy res folder image, css files to build folder">
+        <copy todir="${build}/${res_folder}">
+            <fileset dir="${res}"/>
+        </copy>
+    </target>
+
+    <target name="archive" depends="compile,copy">
+        <jar destfile ="${dist}/${jar_file}">
+
+            <zipgroupfileset dir="${lib}" includes="*.jar" />
+            <zipgroupfileset dir="${javafxlib}" includes="*.jar" />
+
+            <fileset dir="${build}">
+                <include name="**/*.class"/>
+                <include name="**/*.png"/>
+                <include name="**/*.css"/>
+                <exclude name="module-info.class"/>
+            </fileset>
+            <fileset dir="${javafxlib}" if:set="isLinux">
+                <include name="**/*.so"/>
+                <exclude name="**/MANIFEST.MF"/>
+            </fileset>
+            <fileset dir="${javafxlib}" if:set="isWindows">
+                <include name="**/*.dll"/>
+                <exclude name="**/MANIFEST.MF"/>
+            </fileset>
+            <fileset dir="${javafxlib}" if:set="isMac">
+                <include name="**/*.dylib"/>
+                <exclude name="**/MANIFEST.MF"/>
+            </fileset>
+            <manifest>
+                <attribute name="Main-Class" value="${main_class}"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="runme" depends="archive"
+            description="Run Jar file">
+        <java jar="dist/${jar_file}" fork="true">
+        </java>
+    </target>
+
+    <target name="runmeJava" depends="copy,compile"
+            description="Run Jar file">
+        <java classpath="${build}:${javafxlib}" classname="${main_class}" fork="true">
+            <classpath refid="libs.jars"/>
+        </java>
+    </target>
+
+    <target name="testos"
+            description="Run Jar file">
+        <echo if:set="isWindows"> Windows OS </echo>
+        <echo if:set="isLinux"> Linux  OS </echo>
+        <echo if:set="isMac"> Mac OS </echo>
+        <echo message="OS Name is:         ${os.name}" />
+    </target>
+
+
+
+
+
+</project>
+

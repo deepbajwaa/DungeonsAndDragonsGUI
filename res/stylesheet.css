@@ -1,0 +1,54 @@
+/*This is used to change all the buttons to orange, and make them circular*/
+.button{
+    -fx-text-fill: rgb(0, 0, 255);
+    -fx-border-color: rgb(255, 153, 153);
+    -fx-border-radius: 15;
+    -fx-padding: 3 6 6 6;
+}
+/*This is used to modify the borderpane*/
+.border-pane {
+    -fx-background-radius: 5.0;
+    -fx-padding: 8;
+}
+/*This is used to add color to the file menu*/
+.menu {
+    -fx-background-color: gold;
+    -fx-font-weight: bold;
+}
+/*This is used to change the font of the text to times new roman*/
+.text {
+    -fx-font-family: "Times New Roman";
+}
+/*This is used to change the background color of some text to red, and the font to times new roman*/
+#descriptionFont {
+    -fx-background-color: tomato;
+    -fx-font-family: "Times New Roman";
+}
+/*This is used to algign objects on an HBox*/
+#selectionHBox {
+    -fx-spacing: 20;
+    -fx-alignment: center-right;
+}
+/*This is used to create a gradient when updating the text in the center of the gui*/
+#textUpdate {
+    -fx-background-color: linear-gradient(to bottom, red, orange);
+    -fx-font-family: "Times New Roman";
+}
+/*This is used to add a color gradient to the door description, and change the font to times new roman*/
+#doorDescription {
+    -fx-background-color: linear-gradient(to bottom, purple, yellow);
+    -fx-font-family: "Times New Roman";
+    -fx-alignment: center;
+}
+/*This is used to create a color gradient in the edit menu, and make sure that all the buttons are aligned to the center*/
+#editMenu {
+    -fx-spacing: 10;
+    -fx-background-color: linear-gradient(to bottom, white, aquamarine);
+    -fx-alignment: center;
+}
+/*This is used to change the font and color of the listview containing all the chambers and passages, and to align the text to the center*/
+#listView {
+    -fx-background-color: linear-gradient(to bottom, red, orange);
+    -fx-font-family: "Times New Roman";
+    -fx-alignment: center;
+}
