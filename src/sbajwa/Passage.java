@@ -9,14 +9,10 @@ import java.util.ArrayList;
 
 /*
  * Name:Simrandeep Bajwa
- * Date: October 25, 2019
- * Student Number: 1040216
- * Email: sbajwa05@uoguelph.ca
+ * Date: November 17, 2019
  */
 
 public class Passage extends Space implements java.io.Serializable {
-  //these instance variables are suggestions only
-  //you can change them if you wish.
 
   /**
   *This arraylist is used to hold all the passage section in a certain passage.

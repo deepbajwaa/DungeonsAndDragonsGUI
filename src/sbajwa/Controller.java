@@ -9,8 +9,6 @@ import dnd.models.Monster;
 /*
  * Name:Simrandeep Bajwa
  * Date: November 17, 2019
- * Student Number: 1040216
- * Email: sbajwa05@uoguelph.ca
  */
 
 public class Controller implements java.io.Serializable {

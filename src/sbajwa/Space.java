@@ -3,8 +3,6 @@ package sbajwa;
 /*
  * Name:Simrandeep Bajwa
  * Date: November 17, 2019
- * Student Number: 1040216
- * Email: sbajwa05@uoguelph.ca
  */
 
 public abstract class Space implements java.io.Serializable {

@@ -6,10 +6,7 @@ import dnd.die.D20;
 /*
  * Name:Simrandeep Bajwa
  * Date: November 17, 2019
- * Student Number: 1040216
- * Email: sbajwa05@uoguelph.ca
  */
-/*Create a method that adds the doors back to the chambers*/
 
 public class Level implements java.io.Serializable {
 /**
@@ -38,7 +35,6 @@ private char passageChar;
 public Level() {
   /*Creates initial 5 chambers*/
   this.createChambers();
-  /*System.out.println(allChambers);*/
   this.createConnectionMap();
   finalLevel = new HashMap<>();
   passageChar = 'A';

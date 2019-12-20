@@ -8,6 +8,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+/*
+ * Name:Simrandeep Bajwa
+ * Date: November 17, 2019
+ */
+
 public class View {
 /**
  * Create a gridPane that will be returned to the Main class.

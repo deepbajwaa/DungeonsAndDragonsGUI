@@ -8,9 +8,7 @@ import dnd.die.D6;
 
 /*
  * Name:Simrandeep Bajwa
- * Date: October 25, 2019
- * Student Number: 1040216
- * Email: sbajwa05@uoguelph.ca
+ * Date: November 17, 2019
  */
 
 public class Door implements java.io.Serializable {

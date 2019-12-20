@@ -15,10 +15,8 @@ import dnd.die.Percentile;
 
 /*
  * Name:Simrandeep Bajwa
- * Date: October 25, 2019
- * Student Number: 1040216
- * Email: sbajwa05@uoguelph.ca
-*/
+ * Date: November 17, 2019
+ */
 
 public class Chamber extends Space implements java.io.Serializable {
 
@@ -84,14 +82,6 @@ private boolean noStairs;
  * This flag is used to indicate if a trap has already been generated or not.
  */
 private boolean noTrap;
-
-/*
- Required Methods for that we will test during grading
-*/
-/* note:  Some of these methods would normally be protected or private, but because we
-don't want to dictate how you set up your packages we need them to be public
-for the purposes of running an automated test suite (junit) on your code.  */
-
 
 /**
 *This constructor creates an object of the Chamber class, and initializes the appropriate variables.
