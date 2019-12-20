@@ -7,4 +7,4 @@ To Run (Must have ant setup):
 1. Clone the repository.
 2. cd into the root folder.
 3. Type "ant" into the command line in order to compile the program.
-4. Type "ant javaRunme" into the command line in order to run the application.
+4. Type "ant runme" into the command line in order to run the application.
